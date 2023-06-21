@@ -36,7 +36,7 @@ class AuthorType extends GraphQLType
                 'type' => Type::string(),
                 'description' => 'Address of the author'
             ],
-            'book' => [
+            'books' => [
                 'type' => Type::listOf(GraphQL::Type('Book')),
                 'description' => 'List of associated books to this author.'
             ]
