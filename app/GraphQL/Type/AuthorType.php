@@ -21,19 +21,19 @@ class AuthorType extends GraphQLType
     {
         return [
             'author_id' => [
-                'type' => Type::int(),
+                'type' => Type::nonNull(Type::int()) ,
                 'description' => 'ID of the author'
             ],
             'author_name' => [
-                'type' => Type::string(),
+                'type' => Type::nonNull(Type::string()),
                 'description' => 'Name of the author'
             ],
             'author_nationality' => [
-                'type' => Type::string(),
+                'type' => Type::nonNull(Type::string()),
                 'description' => 'Nationality of the author'
             ],
             'author_address' => [
-                'type' => Type::string(),
+                'type' => Type::nonNull(Type::string()),
                 'description' => 'Address of the author'
             ],
             'books' => [

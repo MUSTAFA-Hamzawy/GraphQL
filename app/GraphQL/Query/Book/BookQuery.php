@@ -17,7 +17,7 @@ class BookQuery extends Query
     {
         return [
             'book_id' => [
-                'type' => Type::int(),
+                'type' => Type::nonNull(Type::int()),
                 'rule' => ['required']
             ]
         ];

@@ -23,13 +23,16 @@ class CreateAuthorMutation extends Mutation
     {
         return [
             'author_name' => [
-                'type' => Type::string()
+                'type' => Type::nonNull(Type::string()),
+                'rules' => ['required', 'string']
             ],
             'author_nationality' => [
-                'type' => Type::string()
+                'type' => Type::nonNull(Type::string()),
+                'rules' => ['required', 'string']
             ],
             'author_address' => [
-                'type' => Type::string()
+                'type' => Type::string(),
+                'rules' => ['nullable', 'string']
             ]
         ];
     }

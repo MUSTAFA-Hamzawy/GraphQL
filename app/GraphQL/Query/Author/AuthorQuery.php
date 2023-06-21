@@ -22,7 +22,7 @@ class AuthorQuery extends Query
     {
         return [
             'author_id' => [
-                'type' => Type::int(),
+                'type' => Type::nonNull(Type::int()),
                 'rules' => ['required']
             ]
         ];

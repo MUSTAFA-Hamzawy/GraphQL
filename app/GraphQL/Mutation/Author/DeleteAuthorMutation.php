@@ -4,7 +4,7 @@ namespace App\GraphQL\Mutation\Author;
 
 use App\Models\Author;
 use GraphQL\Type\Definition\Type;
-use Rebing\GraphQL\Support\Facades\GraphQL;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Rebing\GraphQL\Support\Mutation;
 
 class DeleteAuthorMutation extends Mutation
@@ -16,7 +16,7 @@ class DeleteAuthorMutation extends Mutation
     {
         return [
             'author_id' => [
-                'type' => Type::int(),
+                'type' => Type::nonNull(Type::int()),
                 'rules' => ['required']
             ]
         ];
@@ -28,8 +28,14 @@ class DeleteAuthorMutation extends Mutation
     }
 
     public function resolve($root, $args){
-        $author = Author::findOrFail($args['author_id']);
-        return $author->delete();
+        try {
+            $author = Author::findOrFail($args['author_id']);
+            return $author->delete();
+        } catch (ModelNotFoundException $exception){
+
+        }
+
+
     }
 
 }

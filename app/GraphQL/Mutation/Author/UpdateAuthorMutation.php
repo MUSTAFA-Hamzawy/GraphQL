@@ -24,16 +24,20 @@ class UpdateAuthorMutation extends Mutation
     {
         return [
             'author_id' => [
-                'type' => Type::int()
+                'type' => Type::int(),
+                'rules' => ['integer']
             ],
             'author_name' => [
-                'type' => Type::string()
+                'type' => Type::string(),
+                'rules' => ['string']
             ],
             'author_nationality' => [
-                'type' => Type::string()
+                'type' => Type::string(),
+                'rules' => ['string']
             ],
             'author_address' => [
-                'type' => Type::string()
+                'type' => Type::string(),
+                'rules' => ['string']
             ]
         ];
     }

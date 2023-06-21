@@ -24,16 +24,20 @@ class UpdateBookMutation extends Mutation
     {
         return [
             'book_id' => [
-                'type' => Type::int()
+                'type' => Type::int(),
+                'rules' => ['required', 'integer']
             ],
             'book_title' => [
-                'type' => Type::string()
+                'type' => Type::string(),
+                'rules' => [ 'string']
             ],
             'book_description' => [
-                'type' => Type::string()
+                'type' => Type::string(),
+                'rules' => [ 'string']
             ],
             'author_id' => [
-                'type' => Type::int()
+                'type' => Type::int(),
+                'rules' => [ 'integer']
             ]
         ];
     }

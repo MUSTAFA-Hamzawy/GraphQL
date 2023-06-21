@@ -5,6 +5,7 @@ namespace App\GraphQL\Mutation\Book;
 use App\Models\Author;
 use App\Models\Book;
 use GraphQL\Type\Definition\Type;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Rebing\GraphQL\Support\Facades\GraphQL;
 use Rebing\GraphQL\Support\Mutation;
 
@@ -17,7 +18,7 @@ class DeleteBookMutation extends Mutation
     {
         return [
             'book_id' => [
-                'type' => Type::int(),
+                'type' => Type::nonNull(Type::int()),
                 'rules' => ['required']
             ]
         ];
@@ -29,8 +30,13 @@ class DeleteBookMutation extends Mutation
     }
 
     public function resolve($root, $args){
-        $author = Book::findOrFail($args['book_id']);
-        return $author->delete();
+        try {
+            $author = Book::findOrFail($args['book_id']);
+            return $author->delete();
+        }catch (ModelNotFoundException $e){
+
+        }
+
     }
 
 }

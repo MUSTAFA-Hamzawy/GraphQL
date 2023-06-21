@@ -24,13 +24,16 @@ class CreateBookMutation extends Mutation
     {
         return [
             'book_title' => [
-                'type' => Type::string(),
+                'type' => Type::nonNull(Type::string()),
+                'rules' => ['required', 'string', 'unique:books']
             ],
             'book_description' => [
-                'type' => Type::string()
+                'type' => Type::nonNull(Type::string()),
+                'rules' => ['required', 'string']
             ],
             'author_id' => [
-                'type' => Type::int()
+                'type' => Type::nonNull(Type::int()),
+                'rules' => ['required', 'integer']
             ]
         ];
     }
